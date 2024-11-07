@@ -14,9 +14,11 @@ def ocr_paddle(image_path, result_path):
    for idx in range(len(result)):
      res = result[idx]
      if (res):
-       for line in res:
+       for index, line in enumerate(res):
          txts = line[1][0]
          file.write(txts)
+         if (index < len(res) - 1):
+            file.write(' ')
 
 def ocr_tesseract(image_path, result_path):
    txts = pytesseract.image_to_string(Image.open(image_path), lang='fra')
@@ -34,7 +36,7 @@ def file_is_in_range(img_path):
                 return True
     return False
 
-def recursive_call_ocr(image_paths, images_folder_path, txt_folder_path, run_ocr):
+def call_ocr_on_book(image_paths, images_folder_path, txt_folder_path, run_ocr):
    for image_path in image_paths:
       txt_path = image_path.replace('png', 'txt')
       final_img_path = images_folder_path + image_path
@@ -42,20 +44,24 @@ def recursive_call_ocr(image_paths, images_folder_path, txt_folder_path, run_ocr
       if (file_is_in_range(final_img_path) == True):
         run_ocr(final_img_path, final_txt_path)
 
+def call_ocr_on_books(img_folder_path, txt_folder_path, ocr):
+   corpus_img_folders = [f for f in listdir(img_folder_path)]
+   corpus_img_folders.sort()
+   for corpus_img_folder in corpus_img_folders:
+       final_img_folder = img_folder_path + corpus_img_folder + '/'
+       final_txt_folder = txt_folder_path + corpus_img_folder + '/'
+       image_paths = [f for f in listdir(final_img_folder) if isfile(join(final_img_folder, f))]
+       image_paths.sort()
+       call_ocr_on_book(image_paths, final_img_folder, final_txt_folder, ocr)
+
 def print_execution_time(start, ocr):
    end = time.time()
    time_elapsed = end - start
    print("time elapsed for", ocr,":", time_elapsed, "seconds.")
 
 img_folder_path = "./data/corpus/corpus_img/"
-txt_folder_path = "./data/results/page_by_page/tesseract_results_txt/"
+kraken_page_by_page_result_folder_path = "data/results/page_by_page/kraken_results_txt/"
+paddleocr_page_by_page_result_folder_path = "data/results/page_by_page/paddleocr_results_txt/"
+tesseract_page_by_page_result_folder_path = "data/results/page_by_page/tesseract_results_txt/"
 
-corpus_img_folders = [f for f in listdir(img_folder_path)]
-corpus_img_folders.sort()
-
-for corpus_img_folder in corpus_img_folders:
-    final_img_folder = img_folder_path + corpus_img_folder + '/'
-    final_txt_folder = txt_folder_path + corpus_img_folder + '/'
-    image_paths = [f for f in listdir(final_img_folder) if isfile(join(final_img_folder, f))]
-    image_paths.sort()
-    recursive_call_ocr(image_paths, final_img_folder, final_txt_folder, ocr_tesseract)
+call_ocr_on_books(img_folder_path, paddleocr_page_by_page_result_folder_path, ocr_paddle)
