@@ -25,7 +25,6 @@ def generate_pairwise_score(target_content, query_content):
     aligner = Align.PairwiseAligner(match_score=1.0, mismatch_score=-5.0, gap_score=-0.5)
     score = aligner.score(target_content, query_content)
     score_ratio = score / len(target_content)
-    print("similarity score:", score_ratio, "out of 1.0.")
     return score_ratio
 
 def generate_difflib_score(target_content, query_content):
@@ -40,13 +39,14 @@ def generate_difflib_html_report(target_content, query_content, html_file_name):
         f.write(html_diff)
 
 def generate_list_pairwise_score(expected_result_list, ocr_result_list, ocr_name):
+    scores = []
     if len(expected_result_list) != len(ocr_result_list):
         return
+    print("generating scores for " + ocr_name + "...")
     lists_len = len(expected_result_list)
-    total_score_ratios = 0
     for i in range (lists_len):
-        total_score_ratios += generate_pairwise_score(expected_result_list[i], ocr_result_list[i])
-    print(ocr_name, "similarity score:", total_score_ratios/lists_len, "out of 1.0.")
+        scores.append(generate_pairwise_score(expected_result_list[i], ocr_result_list[i]))
+    return scores
 
 def generate_list_difflib_score(expected_result_list, ocr_result_list, ocr_name):
     if len(expected_result_list) != len(ocr_result_list):
@@ -91,6 +91,6 @@ tesseract_result_list = put_folder_content_in_list(tesseract_result_folder_path,
 # generate_list_difflib_score(expected_result_list, paddleocr_result_list, "paddleocr")
 # generate_list_difflib_score(expected_result_list, tesseract_result_list, "tesseract")
 
-generate_list_pairwise_score(expected_result_list, kraken_result_list, "kraken")
-generate_list_pairwise_score(expected_result_list, paddleocr_result_list, "paddleocr")
-generate_list_pairwise_score(expected_result_list, tesseract_result_list, "tesseract")
+kraken_scores = generate_list_pairwise_score(expected_result_list, kraken_result_list, "kraken")
+paddleocr_scores = generate_list_pairwise_score(expected_result_list, paddleocr_result_list, "paddleocr")
+tesseract_scores = generate_list_pairwise_score(expected_result_list, tesseract_result_list, "tesseract")
