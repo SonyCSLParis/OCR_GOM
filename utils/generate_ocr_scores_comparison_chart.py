@@ -9,8 +9,19 @@ def retrieve_books_name(folders_name):
         books_name.append(subfolder.replace('_', ' '))
     return books_name
 
+def print_ocr_scores_by_book_name(kraken_scores, paddleocr_scores, tesseract_scores, books_name):
+    for index, book_name in enumerate(books_name):
+        print(book_name)
+        print("kraken score: ", kraken_scores[index], "out of 1.")
+        print("paddleocr score: ", paddleocr_scores[index], "out of 1.")
+        print("tesseract score: ", tesseract_scores[index], "out of 1.")
+        print ("global score: ", (kraken_scores[index] + paddleocr_scores[index] + tesseract_scores[index]) /3, "out of 1.")
+        print("\n")
+
 def generate_ocr_scores_comparison_chart(kraken_scores, paddleocr_scores, tesseract_scores, books_name):
     print("generating ocr comparison scores chart...")
+
+    plt.figure("OCR scores comparison chart")
 
     bars_width = 0.25
     kraken_bar_x_pos = np.arange(len(kraken_scores))
@@ -31,3 +42,4 @@ def generate_ocr_scores_comparison_chart(kraken_scores, paddleocr_scores, tesser
 
 books_name = retrieve_books_name(expected_result_subfolders)
 generate_ocr_scores_comparison_chart(kraken_scores, paddleocr_scores, tesseract_scores, books_name)
+print_ocr_scores_by_book_name(kraken_scores, paddleocr_scores, tesseract_scores, books_name)

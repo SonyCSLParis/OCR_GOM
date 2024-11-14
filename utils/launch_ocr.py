@@ -59,7 +59,7 @@ def print_execution_time(start, ocr):
    time_elapsed = end - start
    print("time elapsed for", ocr,":", time_elapsed, "seconds.")
 
-img_folder_path = "./data/corpus/corpus_img/"
+img_folder_path = "data/corpus/corpus_img/"
 kraken_page_by_page_result_folder_path = "data/results/page_by_page/kraken_results_txt/"
 paddleocr_page_by_page_result_folder_path = "data/results/page_by_page/paddleocr_results_txt/"
 tesseract_page_by_page_result_folder_path = "data/results/page_by_page/tesseract_results_txt/"
