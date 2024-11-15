@@ -1,0 +1,212 @@
+[
+    {
+        "book_name": "L école du jardin potager",
+        "scores": [
+            {
+                "kraken": 0.9975647769335672,
+                "paddleocr": 0.8617280342879408,
+                "tesseract": 0.40156828365478275
+            }
+        ]
+    },
+    {
+        "book_name": "Manuel pratique de jardinage - Courtois Gérard",
+        "scores": [
+            {
+                "kraken": 0.995078258742969,
+                "paddleocr": 0.8872584984103693,
+                "tesseract": 0.8408229395940328
+            }
+        ]
+    },
+    {
+        "book_name": "Plantes maraicheres-culture",
+        "scores": [
+            {
+                "kraken": 0.9931080324657151,
+                "paddleocr": 0.8599216344808285,
+                "tesseract": 0.8581724041421774
+            }
+        ]
+    },
+    {
+        "book_name": "Manuel pratique de la culture maraichere de Paris  par Moreau et Daverne  1845",
+        "scores": [
+            {
+                "kraken": 0.992588334946757,
+                "paddleocr": 0.8834704743465635,
+                "tesseract": 0.8907913843175218
+            }
+        ]
+    },
+    {
+        "book_name": "Le jardinier de tout le monde",
+        "scores": [
+            {
+                "kraken": 0.9915311477113317,
+                "paddleocr": 0.8783446770925339,
+                "tesseract": 0.8646022756793267
+            }
+        ]
+    },
+    {
+        "book_name": "La Culture maraîchère pratique",
+        "scores": [
+            {
+                "kraken": 0.9914013281116976,
+                "paddleocr": 0.8459901242976332,
+                "tesseract": 0.8778591293489982
+            }
+        ]
+    },
+    {
+        "book_name": "Ma Pratique de la culture maraîchère",
+        "scores": [
+            {
+                "kraken": 0.9896431626542833,
+                "paddleocr": 0.8561041182940242,
+                "tesseract": 0.8601979714041306
+            }
+        ]
+    },
+    {
+        "book_name": "Ysabeau-Le jardin potager",
+        "scores": [
+            {
+                "kraken": 0.9888736092011502,
+                "paddleocr": 0.8853919239904988,
+                "tesseract": 0.8939242405300662
+            }
+        ]
+    },
+    {
+        "book_name": "Guide pratique du jardinier francais - Traite complet dhorticulture par Ph",
+        "scores": [
+            {
+                "kraken": 0.9886855905152758,
+                "paddleocr": 0.8781634746922025,
+                "tesseract": 0.8743730050159598
+            }
+        ]
+    },
+    {
+        "book_name": "Le potager moderne par Gressent  1863",
+        "scores": [
+            {
+                "kraken": 0.9885149849631857,
+                "paddleocr": 0.8601835528362543,
+                "tesseract": 0.8624650005185108
+            }
+        ]
+    },
+    {
+        "book_name": "Le petit jardin potager",
+        "scores": [
+            {
+                "kraken": 0.9882200647249191,
+                "paddleocr": 0.8807766990291263,
+                "tesseract": 0.8962783171521036
+            }
+        ]
+    },
+    {
+        "book_name": "Le Jardin potager",
+        "scores": [
+            {
+                "kraken": 0.9874422342776773,
+                "paddleocr": 0.8191681735985533,
+                "tesseract": 0.8405331190141316
+            }
+        ]
+    },
+    {
+        "book_name": "Les jardiniers de Paris et leur culture",
+        "scores": [
+            {
+                "kraken": 0.9870713600323217,
+                "paddleocr": 0.8633654865915863,
+                "tesseract": 0.8788697540528256
+            }
+        ]
+    },
+    {
+        "book_name": "Manuel complet du jardinier maraicher pépinièriste botaniste fleuriste et paysagiste par L",
+        "scores": [
+            {
+                "kraken": 0.9864572333685322,
+                "paddleocr": 0.8534582893347413,
+                "tesseract": 0.8694561774023232
+            }
+        ]
+    },
+    {
+        "book_name": "L horticulture dans les écoles primaires",
+        "scores": [
+            {
+                "kraken": 0.9850732078341891,
+                "paddleocr": 0.8782087849401027,
+                "tesseract": 0.8768301958547252
+            }
+        ]
+    },
+    {
+        "book_name": "Lecole du jardin potager par M",
+        "scores": [
+            {
+                "kraken": 0.9849841008126251,
+                "paddleocr": 0.886880226121776,
+                "tesseract": 0.8706277234719114
+            }
+        ]
+    },
+    {
+        "book_name": "Traité de culture potagère",
+        "scores": [
+            {
+                "kraken": 0.9766899182014352,
+                "paddleocr": 0.8600642344557635,
+                "tesseract": 0.8620966527826567
+            }
+        ]
+    },
+    {
+        "book_name": "Le potager essai didactique",
+        "scores": [
+            {
+                "kraken": 0.9764223871366728,
+                "paddleocr": 0.847247990105133,
+                "tesseract": 0.8588821892393321
+            }
+        ]
+    },
+    {
+        "book_name": "Manuel de culture maraichère  par Deny et Rodigas  1853",
+        "scores": [
+            {
+                "kraken": 0.9750452547194207,
+                "paddleocr": 0.8504870269804328,
+                "tesseract": 0.8644082406689079
+            }
+        ]
+    },
+    {
+        "book_name": "Manuel du jardinier des primeurs",
+        "scores": [
+            {
+                "kraken": 0.9622340010912775,
+                "paddleocr": 0.8271104528801934,
+                "tesseract": 0.8200171486475953
+            }
+        ]
+    },
+    {
+        "book_name": "Le potager d un curieux",
+        "scores": [
+            {
+                "kraken": 0.897991234477721,
+                "paddleocr": 0.7982103725346968,
+                "tesseract": 0.804163623082542
+            }
+        ]
+    }
+]
