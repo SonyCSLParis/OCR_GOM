@@ -2,11 +2,7 @@ from os import listdir
 from Bio import Align
 from typing import List
 from difflib import SequenceMatcher, HtmlDiff
-
-def get_file_content(file_path):
-    file = open(file_path, 'r')
-    content = file.read()
-    return content
+from utils import get_file_content
 
 def put_folder_content_in_list(folder_path, subfolders):
     content_list = []

@@ -1,13 +1,5 @@
 from os import listdir
-
-def get_file_content(file_path):
-    file = open(file_path, 'r')
-    content = file.read()
-    return content
-
-def write_content_in_file(file_path, content):
-    file = open(file_path, 'a')
-    file.write(content)
+from utils import get_file_content, write_content_in_file
 
 def remove_unwanted_chars(txt_content):
     txt_content = txt_content.replace('\n', ' ')
