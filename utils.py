@@ -3,6 +3,6 @@ def get_file_content(file_path):
     content = file.read()
     return content
 
-def write_content_in_file(file_path, content):
-    file = open(file_path, 'a')
+def write_content_in_file(file_path, content, open_mode):
+    file = open(file_path, open_mode)
     file.write(content)

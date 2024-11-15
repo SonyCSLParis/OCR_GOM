@@ -18,7 +18,7 @@ def concatenate_results(ocr_page_by_page_result_folder_path, ocr_concanate_resul
             final_txt_path = ocr_page_by_page_result_folder_path + subfolder + '/' + txt_path
             txt_content = get_file_content(final_txt_path)
             txt_content = remove_unwanted_chars(txt_content)
-            write_content_in_file(file_to_write, txt_content)
+            write_content_in_file(file_to_write, txt_content, 'a')
 
 kraken_page_by_page_result_folder_path = "data/results/page_by_page/kraken_results_txt/"
 paddleocr_page_by_page_result_folder_path = "data/results/page_by_page/paddleocr_results_txt/"
