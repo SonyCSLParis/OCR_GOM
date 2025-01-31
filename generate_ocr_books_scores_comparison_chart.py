@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import textwrap
 from sort_data_related_to_ocr_books_scores import books_name, kraken_scores, paddleocr_scores, tesseract_scores
 
-def generate_ocr_books_scores_comparison_chart(books_name, kraken_scores, paddleocr_scores, tesseract_scores):
+def generate_ocr_accuracy_scores_comparison_chart(books_name, kraken_scores, paddleocr_scores, tesseract_scores):
     print("Generating OCR Accuracy Scores by Book and Framework Chart...")
 
     plt.figure("OCR Accuracy Scores by Book and Framework", figsize=(10, len(books_name) * 0.5))
@@ -25,4 +25,4 @@ def generate_ocr_books_scores_comparison_chart(books_name, kraken_scores, paddle
     plt.subplots_adjust(left=0.35)
     plt.show()
 
-generate_ocr_books_scores_comparison_chart(books_name, kraken_scores, paddleocr_scores, tesseract_scores)
+generate_ocr_accuracy_scores_comparison_chart(books_name, kraken_scores, paddleocr_scores, tesseract_scores)
