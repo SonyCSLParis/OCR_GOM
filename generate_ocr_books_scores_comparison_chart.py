@@ -11,9 +11,9 @@ def generate_ocr_accuracy_scores_comparison_chart(books_name, kraken_scores, pad
     bars_width = 0.25
     y_positions = np.arange(len(books_name))
 
-    plt.barh(y_positions - bars_width, kraken_scores, color='#4198D7', height=bars_width, label='Kraken')
-    plt.barh(y_positions, paddleocr_scores, color='#46D39A', height=bars_width, label='PaddleOCR')
-    plt.barh(y_positions + bars_width, tesseract_scores, color='#E55759', height=bars_width, label='Tesseract')
+    plt.barh(y_positions - bars_width, kraken_scores, color='#009AE3', height=bars_width, label='Kraken')
+    plt.barh(y_positions, paddleocr_scores, color='#A8A8A8', height=bars_width, label='PaddleOCR')
+    plt.barh(y_positions + bars_width, tesseract_scores, color='#EA0086', height=bars_width, label='Tesseract')
 
     plt.xlabel('OCR Accuracy Scores', fontsize=15)
     plt.ylabel('Books', fontsize=15)
