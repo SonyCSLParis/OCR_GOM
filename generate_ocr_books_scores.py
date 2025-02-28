@@ -87,6 +87,6 @@ tesseract_result_list = put_folder_content_in_list(tesseract_result_folder_path,
 # generate_list_difflib_score(expected_result_list, paddleocr_result_list, "paddleocr")
 # generate_list_difflib_score(expected_result_list, tesseract_result_list, "tesseract")
 
-kraken_scores = generate_list_pairwise_score(expected_result_list, kraken_result_list, "kraken")
-paddleocr_scores = generate_list_pairwise_score(expected_result_list, paddleocr_result_list, "paddleocr")
-tesseract_scores = generate_list_pairwise_score(expected_result_list, tesseract_result_list, "tesseract")
+# kraken_scores = generate_list_pairwise_score(expected_result_list, kraken_result_list, "kraken")
+# paddleocr_scores = generate_list_pairwise_score(expected_result_list, paddleocr_result_list, "paddleocr")
+# tesseract_scores = generate_list_pairwise_score(expected_result_list, tesseract_result_list, "tesseract")

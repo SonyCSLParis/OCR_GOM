@@ -1,5 +1,6 @@
 from utils import get_file_content, get_json_file_content, write_content_in_file, string_contains_digit
 from correct_with_mistral import retrieve_mistral_corrected_words
+from generate_ocr_books_scores import generate_pairwise_score
 import unicodedata
 import spacy
 
@@ -63,26 +64,33 @@ def retrieve_ocr_errors_with_context(ocr_errors):
                         nb_ocr_errors_with_context += 1
         return ocr_errors_with_context, nb_ocr_errors_with_context
 
-def correct_ocr_errors_in_text(ocr_sentences, ocr_errors, corrected_words):
+def correct_ocr_errors_in_text(ocr_text, ocr_errors, corrected_words):
         corrected_word_index = 0
         for ocr_error in ocr_errors:
                 if ocr_error[2] != 0:
                         continue
-                ocr_sentences = ocr_sentences.replace(ocr_error[0], corrected_words[corrected_word_index])
+                ocr_text = ocr_text.replace(ocr_error[0], corrected_words[corrected_word_index].lstrip())
                 corrected_word_index += 1
-        return ocr_sentences[0]
+        return ocr_text
 
+expected_text = get_file_content("data/results/pages_concatenate/expected_results_txt/L_école_du_jardin_potager/L_école_du_jardin_potager.txt")
 ocr_text = get_file_content("data/results/pages_concatenate/kraken_results_txt/L_école_du_jardin_potager/L_école_du_jardin_potager.txt")
-french_words_dictionary = get_file_content("data/dictionary/fr.txt")
 french_cities_dictionary = get_file_content("data/dictionary/french_cities.txt")
 countries_dictionary = get_file_content("data/dictionary/countries.txt")
 morphalou_dictionary = get_file_content("data/dictionary/morphalou.txt")
 
 nlp = spacy.load("fr_dep_news_trf")
+expected_text = normalize_words(expected_text)
 ocr_text = normalize_words(ocr_text)
 ocr_sentences = [i for i in nlp(ocr_text).sents]
+
 ocr_errors = retrieve_ocr_errors(ocr_sentences)
 ocr_errors_with_context, nb_ocr_errors_with_context = retrieve_ocr_errors_with_context(ocr_errors)
 corrected_words = retrieve_mistral_corrected_words(ocr_errors_with_context, nb_ocr_errors_with_context)
-corrected_text = correct_ocr_errors_in_text(str(ocr_sentences), ocr_errors, corrected_words)
+corrected_text = correct_ocr_errors_in_text(ocr_text, ocr_errors, corrected_words)
 write_content_in_file("data/results/pages_concatenate/mistral_corrected_results_txt/L_école_du_jardin_potager/L_école_du_jardin_potager.txt", corrected_text, 'w')
+
+kraken_score = generate_pairwise_score(expected_text, ocr_text)
+corrected_kraken_score = generate_pairwise_score(expected_text, corrected_text)
+print("kraken similarity score:", kraken_score, "out of 1.0.")
+print("corrected kraken similarity score:", corrected_kraken_score, "out of 1.0.")
