@@ -84,56 +84,7 @@ expected_text = normalize_words(expected_text)
 ocr_text = normalize_words(ocr_text)
 ocr_sentences = [i for i in nlp(ocr_text).sents]
 
-# ocr_errors = retrieve_ocr_errors(ocr_sentences)
-ocr_errors = [
-    ['cabalan', "Dès le commencement du mois, on sème aussi les choux pommés hâtifs, cœur-de-bœuf femelle, cabalan, gros-pointu de Strasbourg, pour avoir des primeurs;", 1, 3],
-    ['prud’homme', "le haricot prud’homme : un mange-tout excellent peut fournir jusqu’aux gelées.", 0, 4],
-    ['jusqu’', "le haricot prud’homme : un mange-tout excellent peut fournir jusqu’aux gelées.", 5, 4],
-    ['d’', "On continue, d’une part, à semer et à planter tout ce qui peut être consommé ou recueilli.", 22, 6],
-    ['York', "du cerfeuil, des épinards, radis jaunes-roses, navets jaunes, choux d’York, pain-de-sucre, cabus (1), cabalan, de Strasbourg (tous les choux étrangers se sément dans ce mois);", 1, 8],
-    ['sément', "du cerfeuil, des épinards, radis jaunes-roses, navets jaunes, choux d’York, pain-de-sucre, cabus (1), cabalan, de Strasbourg (tous les choux étrangers se sément dans ce mois);", 1, 8],
-    ['demilongs', "les petits radis roses demilongs passent assez bien les hivers;", 0, 11],
-    ['annće', "Nos jardiniers sément le chou cabus plat d’été tous les mois de l'annće, pour ohtenir des primeurs ;", 0, 14],
-    ['ohtenir', "Nos jardiniers sément le chou cabus plat d’été tous les mois de l'annće, pour ohtenir des primeurs ;", 0, 14],
-    ['l’', "Pendant ce mois on peut semer les épinards, le cerfeuil, qui pourront donner en mars si l’automne est favorable;", 26, 18],
-    ['gotte', "mais on sème avec avantage de la laitue crêpe, la laitue gotte et la laitue romaine.", 0, 19],
-    ['michaux', "On sème à la fin du mois un peu de pois michaux au pied des murs, et à bonne exposition;", 1, 20],
-    ['n’', "on repique le jeune chou d’York, les choux pommés semés en août, soit en pépinière, pour n’être mis en place qu’en février et mars, soit même immédiatement pour un climat tempéré.", 8, 21],
-    ['qu’', "on repique le jeune chou d’York, les choux pommés semés en août, soit en pépinière, pour n’être mis en place qu’en février et mars, soit même immédiatement pour un climat tempéré.", 12, 21],
-    ['c’', "c’est aussi l’époque de couper les montants d’artichaut, de nettoyer les pieds, d’en raccourcir les feuilles extérieures, de donner un labour pour faciliter le buttage que l’on fera le mois prochain.", 1, 24],
-    ['sême', "On sême des radis, des laitnes, nasitort : l’as-CALENDRIER DES SEMIS.", 0, 27],
-    ['laitnes', "On sême des radis, des laitnes, nasitort : l’as-CALENDRIER DES SEMIS.", 0, 27],
-    ['perge', "27 perge est semée en automne avec plus de succès qu’au printemps;", 0, 28],
-    ['quarantin', "le gros pois quarantin, normand à purée, à longue cosse;", 0, 29],
-    ['s’', "car elle s’échauffera au printemps, et les semis et les plantations y prospèreront d’autant mieux qu’elle aura été plus divisée.", 4, 37],
-    ['queCALENDRIER', "Ces cinq espèces doivent être semées par prévision, et peu, au cas de gelées trop fortes, l’observe queCALENDRIER DES SEMIS.", 0, 39],
-    ['L’', "L’ÉCOLE DU JARDIN POTAGER.", 2, 41],
-    ['POTAGÉRES', "CATALOGUE DES GRAINES POTAGÉRES.", 0, 43],
-    ['AlL.', "AlL. Alium sativum.", 0, 44],
-    ['Alium', "AlL. Alium sativum.", 0, 44],
-    ['sativum', "AlL. Alium sativum.", 0, 44],
-    ['Scorodoprasum', "Scorodoprasum.", 0, 47],
-    ['Atriplex', "Atriplex hortensis.", 0, 51],
-    ['hortensis', "Atriplex hortensis.", 0, 51],
-    ['POTAGERES', "L’usage de cette30 PLANTES POTAGERES.", 1, 52],
-    ['Cynara', "Cynara.", 0, 56],
-    ['enPLANTES', "L’artichaut de Laon donne des produits enPLANTES POTAGÈRES.", 0, 67],
-    ['officinalis', "Asparagus officinalis du midi de la France.", 0, 70],
-    ['maniéres', "On multiplie l’asperge de deux maniéres, ou par le semis en place, ou bien au moyen de plants élevés en pépinière : cette dernière méthode est la plus usitée.", 0, 71],
-    ['Ulm', "La graine d’asperges de Hollande verte, et grosse violette d’Ulm, sont les meilleures : on sème la graine en mars pour semis.", 0, 77],
-    ['Beta', "BETTERAVE, Beta vulgaris.", 0, 78],
-    ['vulgaris', "BETTERAVE, Beta vulgaris.", 0, 78],
-    ['Castelnaudary', "La rouge noire et la jaune de Castelnaudary sont les plus estimées dans notre pays;", 0, 79],
-    ['Ocymum', "Ocymum Basilicum.", 0, 89],
-    ['Basilicum', "Ocymum Basilicum.", 0, 89],
-    ['Daucus', "Daucus Carota.", 0, 92],
-    ['Carota', "Daucus Carota.", 0, 92],
-    ['déli', "la rouge, la blanche, déli-PLANTES POTAGERES.", 0, 97],
-    ['cate', "33 cate au goût, hâtive (carotte blanche à colet vert hors terre, très-grosse : la semer claire, chaque graine à 5, 7 et 8 pouces de distance, nouvelle espèce) : les deux dernières peuvent être semées en septembre, octobre et février, pour les avoir de bonne heure, et remplacer celles qui, semées en juin, commencent à se boiser.", 0, 98],
-    ['colet', "33 cate au goût, hâtive (carotte blanche à colet vert hors terre, très-grosse : la semer claire, chaque graine à 5, 7 et 8 pouces de distance, nouvelle espèce) : les deux dernières peuvent être semées en septembre, octobre et février, pour les avoir de bonne heure, et remplacer celles qui, semées en juin, commencent à se boiser.", 0, 98],
-    ['Apium', "Apium graveolens.", 0, 112],
-    ['graveolens', "Apium graveolens.", 0, 112]
-]
+ocr_errors = retrieve_ocr_errors(ocr_sentences)
 ocr_errors_with_context, nb_ocr_errors_with_context = retrieve_ocr_errors_with_context(ocr_errors)
 corrected_words = retrieve_llm_corrected_words(ocr_errors_with_context, nb_ocr_errors_with_context, "mistral")
 corrected_text = correct_ocr_errors_in_text(ocr_text, ocr_errors, corrected_words)
